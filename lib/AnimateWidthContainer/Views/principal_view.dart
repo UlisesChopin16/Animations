@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:new_app/Components/animated_container_component.dart';
+import 'package:new_app/AnimateWidthContainer/Components/animated_container_component.dart';
 
 class PrincipalView extends StatelessWidget {
   const PrincipalView({super.key});

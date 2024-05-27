@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:new_app/Views/principal_view.dart';
+import 'package:new_app/AnimateWidthContainer/Views/principal_view.dart';
 
 void main() {
   runApp(const MyApp());
