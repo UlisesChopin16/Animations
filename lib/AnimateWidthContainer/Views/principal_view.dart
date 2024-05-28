@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:new_app/AnimateWidthContainer/Components/animated_container_component.dart';
+import 'package:new_app/AnimateWidthContainer/Components/list_of_animated_containers.dart';
 
 class PrincipalView extends StatelessWidget {
   const PrincipalView({super.key});
+
 
   @override
   Widget build(BuildContext context) {
@@ -11,27 +12,11 @@ class PrincipalView extends StatelessWidget {
         backgroundColor: Theme.of(context).colorScheme.primaryContainer,
         title: const Text('Principal View'),
       ),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          AnimatedContainerComponent(
-            color: Theme.of(context).colorScheme.secondaryContainer,
-            text: 'Hello World',
-          ),
-          AnimatedContainerComponent(
-            color: Theme.of(context).colorScheme.secondaryContainer,
-            text: 'Hello World',
-          ),
-          AnimatedContainerComponent(
-            color: Theme.of(context).colorScheme.secondaryContainer,
-            text: 'Hello World',
-          ),
-          AnimatedContainerComponent(
-            color: Theme.of(context).colorScheme.secondaryContainer,
-            text: 'Hello World',
-          ),
-        ],
+      body: const FittedBox(
+        child: SizedBox(
+          height: 800,
+          child: ListOfAnimatedContainers()
+        ),
       ),
     );
   }

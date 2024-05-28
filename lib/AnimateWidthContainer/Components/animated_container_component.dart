@@ -1,16 +1,17 @@
 import 'dart:math';
-
-import 'package:flutter/animation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 class AnimatedContainerComponent extends StatefulWidget {
   final Color color;
   final String text;
+  final bool enter;
+  final void Function()? onTap;
   const AnimatedContainerComponent({
     super.key,
     required this.color,
     required this.text,
+    this.enter = false,
+    this.onTap,
   });
 
   @override
@@ -51,36 +52,39 @@ class _AnimatedContainerComponentState extends State<AnimatedContainerComponent>
 
   @override
   Widget build(BuildContext context) {
-    return MouseRegion(
-      onEnter: (event) {
-        setState(() {
-          controller.forward();
-          width = 300;
-          enter = true;
-        });
-      },
-      onExit: (event) {
-        setState(() {
-          width = 150;
-          height = 150;
-          enter = false;
-          controller.reverse();
-        });
-      },
-      child: AnimatedContainer(
-        duration: duration,
-        width: width,
-        height: height,
-        color: widget.color,
-        child: Center(
-          child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                AnimatedImage(controller: controller),
-                Flexible(child: Text(widget.text)),
-              ],
-            ),
-        )
+    return InkWell(
+      onTap: widget.onTap,
+      child: MouseRegion(
+        onEnter: (event) {
+          setState(() {
+            controller.forward();
+            width = 300;
+            enter = true;
+          });
+        },
+        onExit: (event) {
+          setState(() {
+            width = 150;
+            height = 150;
+            enter = false;
+            controller.reverse();
+          });
+        },
+        child: AnimatedContainer(
+          duration: duration,
+          width: width,
+          height: height,
+          color: widget.color,
+          child: Center(
+            child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  AnimatedImage(controller: controller),
+                  Flexible(child: Text(widget.text)),
+                ],
+              ),
+          )
+        ),
       ),
     );
   }
